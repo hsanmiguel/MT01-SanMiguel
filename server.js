@@ -9,28 +9,19 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.json({ message: '' });
+    res.json({ message: 'Welcome to Student API' });
 });
 
 const studentRoutes = require('./routes/studentRoutes');
-app.use(studentRoutes);
+app.use('/', studentRoutes);
 
 app.use((req, res) => {
-    res.status(404).json({ 
-        message: 'Route not found',
-        requestedPath: req.path,
-        method: req.method
-    });
+    res.status(404).json({ message: 'Not found' });
 });
 
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    dbName: 'student_db',
-    tls: true,
-    tlsAllowInvalidCertificates: false,
-    retryWrites: true,
-    w: "majority"
+    useUnifiedTopology: true
 });
 
 const db = mongoose.connection;
