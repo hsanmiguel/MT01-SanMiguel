@@ -21,8 +21,12 @@ app.use((req, res) => {
 
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000,
+    retryWrites: true,
+    w: "majority",
+    dbName: 'student_db'
+}).catch(err => console.log('Error connecting to MongoDB:', err));
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
