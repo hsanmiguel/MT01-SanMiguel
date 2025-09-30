@@ -29,8 +29,8 @@ mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     dbName: 'student_db',
-    ssl: true,
-    sslValidate: true,
+    tls: true,
+    tlsAllowInvalidCertificates: false,
     retryWrites: true,
     w: "majority"
 });
