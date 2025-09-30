@@ -15,9 +15,8 @@ app.get('/', (req, res) => {
 });
 
 const studentRoutes = require('./routes/studentRoutes');
-app.use('/api', studentRoutes);
+app.use(studentRoutes);
 
-// Handle 404 errors for any unknown routes
 app.use((req, res) => {
     res.status(404).json({ 
         message: 'Route not found',
