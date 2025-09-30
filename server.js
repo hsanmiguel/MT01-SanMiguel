@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.json({ message: 'Welcome to Student API' });
+    res.json({ message: '[]' });
 });
 
 const studentRoutes = require('./routes/studentRoutes');
@@ -22,10 +22,10 @@ app.use((req, res) => {
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 5000,
-    retryWrites: true,
-    w: "majority",
-    dbName: 'student_db'
+    tlsInsecure: true,
+    ssl: true,
+    authSource: "admin",
+    retryWrites: true
 }).catch(err => console.log('Error connecting to MongoDB:', err));
 
 const db = mongoose.connection;

@@ -10,5 +10,5 @@ services:
       - key: PORT
         value: 10000
       - key: MONGODB_URI
-        value: mongodb+srv://hsanmiguel_db_user:hanssanmiguel22@cluster0.hh3eumt.mongodb.net/student_db?retryWrites=true&w=majority
+        value: mongodb+srv://hsanmiguel_db_user:hanssanmiguel22@cluster0.hh3eumt.mongodb.net/?ssl=true&authSource=admin
     autoDeploy: true
