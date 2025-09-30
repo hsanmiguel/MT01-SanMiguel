@@ -28,7 +28,11 @@ app.use((req, res) => {
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    dbName: 'student_db'
+    dbName: 'student_db',
+    ssl: true,
+    sslValidate: true,
+    retryWrites: true,
+    w: "majority"
 });
 
 const db = mongoose.connection;
